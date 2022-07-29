@@ -1,0 +1,19 @@
+
+<%=stylesheet_link_tag "test"%>
+
+<div class="body">
+    <%=form_with method: "get" do |form|%>
+    <%=form.label "test","Enter a Flickr ID"%>
+    <%=form.text_field :flickr_id%>
+    <%=form.submit "Find User's Photos!"%>
+    <%end%>
+    
+    
+    <div class="photo-container">
+        <%if@photos%>
+        <%@photos.each do |photo|%>
+        <img src="<%=Flickr.url(photo)%>">
+        <%end%>
+        <%end%>
+    </div>
+</div>
